@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:alpine
+    container_name: db_container
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=user
+    ports:
+      - "5432:5432"
+    networks:
+      - my_network
+    volumes:
+      - ./test_data:/var/lib/postgresql/data
+
+
+  app:
+    build: .
+    container_name: app_container
+    environment:
+      - DBUSER=user
+      - DBPASS=pass
+      - DBNAME=tabel
+      - DBHOST=db
+      - API_GITHUB=API_KEY
+    networks:
+     - my_network
+    depends_on:
+      - db
+    volumes:
+      - ./test_app:/app/log/
+
+networks:
+  my_network:
