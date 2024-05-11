@@ -30,8 +30,8 @@ class DateBeas:
     def insert_table(self, string):
         with self.conn.cursor() as cur:
             try:
-                insert_query = f"""INSERT INTO reps (id, full_name, readme, ai_summary, description, topics, stargazers, forks, watchers, created_date, updated_date, pushed_date)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+                insert_query = f"""INSERT INTO reps (id, full_name, readme, description, topics, stargazers, forks, watchers, created_date, updated_date, pushed_date)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
                 cur.execute(insert_query, string)
                 self.conn.commit()
 
@@ -48,7 +48,6 @@ class DateBeas:
                     id SERIAL PRIMARY KEY,    
                     full_name VARCHAR,    
                     readme TEXT,    
-                    ai_summary TEXT,    
                     description TEXT,    
                     topics TEXT[],    
                     stargazers INT,    
@@ -90,7 +89,6 @@ class DateBeas:
 
 def main():
     DB = DateBeas(config.DBname, config.DBuser, config.DBpass, config.DBhost, config.DBport)
-    #DB.komand_ran("TRUNCATE TABLE reps")
     DB.init_daese()
     DB.init_daese2()
 

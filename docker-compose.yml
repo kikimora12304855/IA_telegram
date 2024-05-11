@@ -7,7 +7,7 @@ services:
     environment:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=pass
-      - POSTGRES_DB=user
+      - POSTGRES_DB=tabel
     ports:
       - "5432:5432"
     networks:
@@ -24,13 +24,13 @@ services:
       - DBPASS=pass
       - DBNAME=tabel
       - DBHOST=db
-      - API_GITHUB=API_KEY
+      - API_GITHUB=YOUER_API_GITHUB
     networks:
      - my_network
     depends_on:
       - db
     volumes:
-      - ./test_app:/app/log/
+      - ./logs:/log
 
 networks:
   my_network:
