@@ -33,20 +33,26 @@ def main(url):
         get_url = requests.get(url, headers=headers)
         log.save_to_file(url)
 
+        url = sb.search_next_url(get_url)
+
+        time.sleep(4)
+
         try:
             get_url_json = get_url.json()
 
             print(url)
 
             for json_page in get_url_json:
-                if sb.get_content(json_page) != None:
 
+                content_from_get_content = sb.get_content(json_page)
+
+                if content_from_get_content != None:
                     #TODO: сделать тут что то получе 
-                    content_from_get_content = sb.get_content(json_page)
+
                     if content_from_get_content[2] != None:
 
                         BD.insert_table(content_from_get_content)
-                time.sleep(3)
+
 
         except KeyboardInterrupt:
             print(url)
