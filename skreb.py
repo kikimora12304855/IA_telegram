@@ -1,8 +1,7 @@
 import requests
 import datetime
 import log_system
-import BD
-import config
+import base64
 
 class Sckred:
     def __init__(self, headers) -> None:
@@ -70,6 +69,7 @@ class Sckred:
 
         created_at_int, pushed_at_int, updated_at_int = self.date_difference(created_at, pushed_at, updated_at)
         content_base64 = self.content_from_readme(full_name)
+        content_base64 = base64.b64decode(content_base64).decode('utf-8') if content_base64 != None else None
      
         return id_rep, full_name, content_base64, description, topics, stargazers_count, forks, watchers, created_at_int, updated_at_int, pushed_at_int
 
