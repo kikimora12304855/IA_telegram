@@ -17,20 +17,38 @@ services:
 
 
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: app_container
     environment:
       - DBUSER=user
       - DBPASS=pass
       - DBNAME=tabel
       - DBHOST=db
-      - API_GITHUB=YOUER_API_GITHUB
+      - API_GITHUB=YOURE_API
     networks:
      - my_network
     depends_on:
       - db
     volumes:
       - ./logs:/log
+
+  url_app:
+    build:
+      context: .
+      dockerfile: Dockerfile_help_url
+    container_name: help_url
+    environment:
+      - DBUSER=user
+      - DBPASS=pass
+      - DBNAME=tabel
+      - DBHOST=db
+      - API_GITHUB=YOURE_API
+    networks:
+     - my_network
+    depends_on:
+      - db
 
 networks:
   my_network:

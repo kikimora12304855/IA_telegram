@@ -5,6 +5,6 @@ log
 tmp*
 tmp
 .*
-LICENSE
 README.md
 skrep_IA
+docker

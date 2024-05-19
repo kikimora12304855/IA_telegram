@@ -18,18 +18,6 @@ class LogSystem:
         logging.root.addHandler(file_handler)
 
 
-    def save_to_file(self, content):
-        with open(os.path.join(self.path, "tmp.txt"), "w") as file:
-            file.write(content)
-
-
-    def read_to_file(self):
-        file_path = os.path.join(self.path, "tmp.txt")
-        if os.path.exists(file_path):
-            with open(file_path, "r") as file:
-                return file.read()
-        return None
-
     def seve_to_log(self, level_logging, message, error):
         """
         B - DEBUG
