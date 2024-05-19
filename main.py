@@ -1,5 +1,6 @@
 from psycopg2 import Error
-import requests import config
+import requests 
+import config
 import time 
 import BD
 import log_system
