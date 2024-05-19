@@ -1,6 +1,5 @@
 from psycopg2 import Error
-import requests
-import config
+import requests import config
 import time 
 import BD
 import log_system
@@ -58,6 +57,10 @@ def main():
             id_from_ramdom = ramdom[0]
 
             get_url = requests.get(url, headers=headers)
+            
+            while get_url.ok is not True:
+                time.sleep(60*1)
+                get_url = requests.get(url, headers=headers)
 
             get_url_json = get_url.json()
 
@@ -65,7 +68,7 @@ def main():
 
             for json_page in get_url_json:
 
-                time.sleep(3)
+                time.sleep(2.3)
 
                 content_from_get_content = sb.get_content(json_page)
 
