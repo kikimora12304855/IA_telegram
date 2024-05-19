@@ -53,8 +53,8 @@ def main(url):
                 url_next = search_next_url(get_url)
                 if url_next:
                     if url_baes == url:
-                        url = url_next
                         BD.insert_table(table, int_inlet, column, (url,))
+                        url = url_next
 
                     elif int(url_next.split("=")[-1]) - int(url.split("=")[-1])  >= 100:
                         BD.insert_table(table, int_inlet, column, (url,))
