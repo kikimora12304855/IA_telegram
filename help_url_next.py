@@ -46,7 +46,7 @@ def main(url):
 
 
     while url:
-        time.sleep(0.4)
+        time.sleep(0.1)
         get_url = requests.get(url, headers=headers)
 
         while get_url.ok is not True:
