@@ -58,7 +58,7 @@ class Sckred:
             return None
 
         topics           = list(get_rep['topics'])
-        watchers         = int(get_rep['watchers'])
+        watchers         = int(get_rep['subscribers_count'])
         stargazers_count = int(get_rep['stargazers_count'])
         forks            = int(get_rep['forks'])
         description      = get_rep['description']
