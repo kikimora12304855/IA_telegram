@@ -46,31 +46,32 @@ def main(url):
 
 
     while url:
+        time.sleep(1)
         get_url = requests.get(url, headers=headers)
+
+        while get_url.ok is not True:
+            time.sleep(300)
+            get_url = requests.get(url, headers=headers)
         
-        if get_url.ok:
-            try:
-                url_next = search_next_url(get_url)
-                if url_next:
-                    if url_baes == url:
-                        BD.insert_table(table, int_inlet, column, (url,))
-                        url = url_next
+        try:
+            url_next = search_next_url(get_url)
+            if url_next:
+                if url_baes == url:
+                    BD.insert_table(table, int_inlet, column, (url,))
+                    url = url_next
 
-                    elif int(url_next.split("=")[-1]) - int(url.split("=")[-1])  >= 100:
-                        BD.insert_table(table, int_inlet, column, (url,))
-                        url = url_next
+                elif int(url_next.split("=")[-1]) - int(url.split("=")[-1])  >= 100:
+                    BD.insert_table(table, int_inlet, column, (url,))
+                    url = url_next
 
-                    else:
-                        time.sleep(60*60*24)
                 else:
                     time.sleep(60*60*24)
+            else:
+                time.sleep(60*60*24)
 
-            except (Exception) as error:
-                log.seve_to_log("W", "main in help_url_next", error)
-                break
-        else:
-            log.seve_to_log("w", "couldn't get it", get_url.status_code)
-            time.sleep(60)
+        except (Exception) as error:
+            log.seve_to_log("W", "main in help_url_next", error)
+            break
 
 
 
