@@ -1,4 +1,5 @@
 from psycopg2 import Error
+import random
 import requests 
 import config
 import time 
@@ -47,6 +48,8 @@ def main():
     sb = skreb.Sckred(headers)
 
     while True:
+        if random.randint(1, 10) == random.randint(1, 10):
+            time.sleep(random.randint(10, 600))
         try:
             ramdom = BD.ramdom_from_table(column_id_url, column_url_filter, table_url)
 
