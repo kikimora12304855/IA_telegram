@@ -15,7 +15,7 @@ class Sckred:
             get_path = get_path.json()
 
             for item in get_path:
-                if item["path"].upper().startswith("README") :
+                if item["path"].upper().startswith("README"):
                     readme = item["path"]
                     content = requests.get(f"https://api.github.com/repos/{full_name}/contents/{readme}", headers=self.headers).json()
                     

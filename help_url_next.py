@@ -1,4 +1,5 @@
 import time
+import random
 import requests
 import config
 import BD
@@ -46,6 +47,8 @@ def main(url):
 
 
     while url:
+        if random.randint(1, 10) == random.randint(1, 10):
+            time.sleep(random.randint(10, 600))
         time.sleep(0.1)
         get_url = requests.get(url, headers=headers)
 
