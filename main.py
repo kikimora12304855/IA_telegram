@@ -49,7 +49,7 @@ def main():
 
     while True:
         if random.randint(1, 10) == random.randint(1, 10):
-            time.sleep(random.randint(10, 300))
+            time.sleep(random.randint(1, 60))
         try:
             ramdom = BD.ramdom_from_table(column_id_url, column_url_filter, table_url)
 

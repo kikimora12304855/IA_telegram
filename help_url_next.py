@@ -48,7 +48,7 @@ def main(url):
 
     while url:
         if random.randint(1, 10) == random.randint(1, 10):
-            time.sleep(random.randint(10, 300))
+            time.sleep(random.randint(10, 60))
         time.sleep(0.1)
         get_url = requests.get(url, headers=headers)
 
